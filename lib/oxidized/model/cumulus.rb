@@ -31,6 +31,9 @@ class Cumulus < Oxidized::Model
     cfg += add_comment 'NTP.CONF'
     cfg += cmd 'cat /etc/ntp.conf'
 
+    cfg += add_comment 'QUAGGA.CONF'
+    cfg += cmd 'cat /etc/quagga/Quagga.conf'
+
     cfg += add_comment 'QUAGGA DAEMONS'
     cfg += cmd 'cat /etc/quagga/daemons'
 
