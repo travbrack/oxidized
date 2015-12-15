@@ -1,6 +1,7 @@
+# Requires a root login, or NOPASSWD to bet set in sudoers
 class Cumulus < Oxidized::Model
 
-  prompt /^((\w*)@(.*)([>#]\s)+)$/
+  prompt /\w+@.+[#$]\s+/
   comment  '# '
 
 
@@ -69,6 +70,12 @@ class Cumulus < Oxidized::Model
   end
 
   cfg :telnet, :ssh do
+    if vars :enable
+      post_login do
+        send "sudo bash\n"
+      pre_logout 'exit'
+      end
+    end
     pre_logout 'exit'
   end
 
