@@ -59,7 +59,7 @@ class Cumulus < Oxidized::Model
     cfg += cmd 'cat /etc/cumulus/switchd.conf'
 
     cfg += add_comment 'ACL'
-    cfg += cmd 'iptables-save'
+    cfg += cmd 'iptables -S'
 
     cfg += add_comment 'VERSION'
     cfg += cmd 'cat /etc/cumulus/etc.replace/os-release'
